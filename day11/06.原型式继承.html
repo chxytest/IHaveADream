@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*var obj=new Object();
+		obj.name="alice";*/
+		/*var obj={
+			name:"alice"
+		};*/
+		//console.log(obj.name);   
+		//console.log(obj.constructor.name); //Object类型
+
+		function Student(name){
+			this.name=name;
+		}
+		var stu=new Student("tom");
+		
+
+		//原型式继承
+		//方式1：动态向原型对象中添加属性
+		Student.prototype.age=21;
+		Student.prototype.sex="male";
+		Student.prototype.run=function(){
+			console.log(this.name+"正在奔跑!"); 
+		};
+
+		/*console.log(stu.age);
+		console.log(stu.sex);
+		stu.run();*/
+
+		//方式2：直接覆盖原型对象，只针对覆盖之后创建对象
+		//新增的属性对覆盖之后创建的对象有效
+		Student.prototype={
+			constructor:Student, //如果希望覆盖之后创建的对象是类型相关的，必须添加constructor属性
+			hobby:"吃饭",
+			study:function(){
+				console.log(this.name+"正在学习！");
+			},
+			show:function(){
+				console.log("我叫"+this.name);
+			}
+		};
+		var stu2=new Student("alice");
+		// console.log(stu.name+","+stu.hobby); //覆盖之前创建的对象无法访问hobby
+		// console.log(stu2.name+","+stu2.hobby); //覆盖之后创建的对象可以访问hobby
+		// console.log(stu.constructor.name); //覆盖之前创建的对象类型为Student
+		// console.log(stu2.constructor.name); //覆盖之后创建的对象类型为Object
+
+		console.log(stu.age);
+		console.log(stu2.age);
+		//stu.study();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

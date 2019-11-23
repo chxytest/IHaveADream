@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*
+			有一个数列：8，4，2，1，23，344，12
+			1.循环输出数组的值
+			2.求数列中所有数值的和
+			3.将最大值放到最前面，最小值放到最后面
+		*/
+		var nums=[8,4,2,1,23,344,12];
+		//1.循环输出数组的值，2.求数列中所有数值的和
+		var sum=0;
+		console.log("数组nums中的元素：");
+		for(var index in nums){
+			console.log(nums[index]);
+			sum+=nums[index];
+		}
+		console.log("数组nums中所有元素之和："+sum);
+
+		//3.求数列中所有数值的和
+		var maxIndex=0;//假设最大值和最小值的索引都为0
+		var minIndex=0;
+		for(var i=0;i<nums.length;i++){
+			if(nums[i]>nums[maxIndex]){
+				maxIndex=i;
+			}
+			if(nums[i]<nums[minIndex]){
+				minIndex=i;
+			}
+		}
+		
+		//交换位置nums[0]、nums[maxIndex]
+		var temp=nums[0]; //将原来的第一个元素放到临时变量中
+		nums[0]=nums[maxIndex]; //将最大值放到最前面
+		nums[maxIndex]=temp; //将临时变量中的值放到原来最大值的位置
+
+		//交换位置nums[nums.length-1]、nums[minIndex]
+		temp=nums[nums.length-1];
+		nums[nums.length-1]=nums[minIndex];
+		nums[minIndex]=temp;
+		console.log(nums);
+
+	</script>	
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.hidden{
+			display: none;
+		}
+	</style>
+	<script type="text/javascript">
+		function show(flag){
+			if(flag=="right"){
+				$("left1").style.display="none";
+				$("right1").style.display="none";
+				$("end1").style.display="none";
+				$("left2").style.display="block";
+				$("right2").style.display="block";
+				$("end2").style.display="block";
+			}else{
+				$("left1").style.display="block";
+				$("right1").style.display="block";
+				$("end1").style.display="block";
+				$("left2").style.display="none";
+				$("right2").style.display="none";
+				$("end2").style.display="none";
+			}
+		}
+
+		function $(id){
+			return document.getElementById(id);
+		}	
+	</script>
+</head>
+<body>
+	<table border="0px" cellpadding="0" cellspacing="0">
+		<tr>
+			<td>
+				<img src="images/left1.jpg" id="left1"/>
+				<img src="images/left2.jpg" id="left2" class="hidden" onmouseover="show('left')" />
+			</td>
+			<td>
+				<img src="images/right1.jpg" id="right1" onmouseover="show('right')">
+				<img src="images/right2.jpg" id="right2" class="hidden">
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<img src="images/end1.jpg" id="end1">
+				<img src="images/end2.jpg" id="end2" class="hidden">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

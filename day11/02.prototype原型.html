@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		/*function Student(name,age){
+			this.name=name;
+			this.age=age;
+			this.show=function(){
+				console.log("我是一个学生，姓名："+this.name+",年龄："+this.age);
+			};
+			this.sayHello=function(){
+				console.log("您好，我是一个学生！");
+			};
+			this.sayGoodbye=function(){
+				console.log("再见！");
+			};
+		}*/
+
+		//所有函数都具有一个prototype属性
+		// console.log(Student.prototype);
+
+		/*var stu1=new Student("张三",24);
+		stu1.show();
+		stu1.sayHello();
+		stu1.sayGoodbye();
+
+		var stu2=new Student("李四",25);
+		stu2.show();
+		stu2.sayHello();
+		stu2.sayGoodbye();
+
+		console.log(stu1===stu2); //false
+		console.log(stu1.name===stu2.name); //false
+		console.log(stu1.sayHello===stu2.sayHello); //flase
+		console.log(stu1.sayGoodbye===stu2.sayGoodbye); //false*/
+
+
+		//stu1.sayHello和stu2.sayHello分别使用不同的内存空间，都要占用资源
+		//但是其内容是完全相同的，为了节省内存空间，希望能够共用
+		function Student(name,age){
+			this.name=name;
+			this.age=age;
+			this.show=function(){
+				console.log("我是一个学生，姓名："+this.name+",年龄："+this.age);
+			};
+		}
+
+		//可以通过prototype来添加新的属性(方法)，并且新增内容为该构造函数的所有对象所共有
+		Student.prototype.sayHello=function(){
+			console.log("您好，我是一个学生！");
+		};
+		Student.prototype.sayGoodbye=function(){
+			console.log("再见！");
+		};
+		//由该构造函数创建的对象会默认链接到该属性上
+		var stu1=new Student("tom",20);
+		stu1.sayHello();
+		var stu2=new Student("jack",24);
+		console.log(stu1.sayHello===stu2.sayHello); //true
+
+		/*var obj=new Object();
+		obj.sayHello();*/ //只有对应的构造函数创建的对象才能访问
+
+
+		/*
+			访问对象属性时查找顺序：
+			1.首先在当前对象中查找
+			2.如果没有，就会到该对象关联的构造函数的 prototype属性中找，即到原型对象中查找
+		*/
+		Student.prototype.sex="男"; //共享的属性
+		stu1.sex="女"; //stu1私有的属性
+		console.log(stu1.sex);
+		console.log(stu2.sex);
+		console.log(stu2.hobby);
+
+
+		//扩展Array类型，为Array类型添加新的属性(方法)
+		Array.prototype.reverseSort=function(){ //实现倒序排列的功能
+			this.sort(); //this表示当前对象，即要操作的数组
+			this.reverse();
+		};
+		Array.prototype.show=function(){ //实现输出数组中元素的功能
+			console.log("数组中共有："+this.length+"个元素，分别如下：");
+			for(var i=0;i<this.length;i++){
+				console.log("第"+(i+1)+"个元素为："+this[i]);
+			}
+		};
+
+		var names=new Array("tom","jack","alice","mike");
+		// console.log(Array.prototype);
+
+		// names.sort();
+		// names.reverse();
+		names.reverseSort();
+		console.log(names);
+		
+		names.show();
+		var nums=[12,3,98,24,2,45,70];
+		nums.show();
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//字面量
+		var str="welcome to itany."; //字符串字面量
+		var array=[13,35,2,53,23]; //数组字面量
+		var fn=function(){ //函数字面量
+			console.log("welcome to itany.");
+		};
+
+		//对象字面量，多个属性之间以逗号隔开，属性名和属性值之间以冒号隔开
+		var stu={
+			name:"tom",
+			age:25,
+			"height":180.5,
+			"js-score":92, //如果属性名不符合强制规范，则必须使用引号引起来
+			study:function(){
+				console.log("我是一个学生，正在学习！");
+			},
+			run:function(){
+				console.log(this.name+"正在奔跑！");
+			}
+		};
+		console.log(stu.name);
+		console.log(stu.age);
+		console.log(stu["height"]);
+		console.log(stu["js-score"]); //只能使用此方式来访问
+		stu.study();
+		stu["run"]();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.even{
+			background-color: #ccc;
+			color: #f00;
+		}
+		.odd{
+			background-color: pink;
+			color: #fff;
+		}
+		.current{
+			background-color: yellow;
+			color: #000;
+		}
+	</style>
+	<script type="text/javascript">
+		//将鼠标所在位置的表格行高亮显示
+		var oldClass;
+		window.onload=function(){
+			var tb=document.getElementById("tb");
+			var trs=tb.getElementsByTagName("tr");
+			for (var i = 0; i < trs.length; i++) {
+				//隔行变色
+				if(i%2==0){
+					trs[i].className="even";
+				}else{
+					trs[i].className="odd";
+				}
+				trs[i].onmouseover=function(){
+					oldClass=this.className; //获取原样式
+					this.className="current"; //设置新样式
+				};
+				trs[i].onmouseout=function(){
+					this.className=oldClass; //回归原样式
+				};
+			};
+		};
+
+	</script>
+</head>
+<body>
+	<table width="500px" border="1px" cellpadding="0" cellspacing="0" align="center">
+		<thead>
+			<tr>
+				<th>th1</th>
+				<th>th2</th>
+				<th>th3</th>
+				<th>th4</th>
+				<th>th5</th>
+			</tr>
+		</thead>
+		<tbody id="tb">
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+			<tr>
+				<td>td01</td>
+				<td>td02</td>
+				<td>td03</td>
+				<td>td04</td>
+				<td>td05</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+</html>

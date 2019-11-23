@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 二重循环：外层循环执行一次，内层循环执行一轮
+
+		//某次程序大赛，共3个班级参加，每个班级有4名学员参赛，计算每个班级参赛学员的平均分
+		
+		for(var i=1;i<=3;i++){//外层循环控制班级数量
+			alert("------------请输入第"+i+"个班级的成绩---------------");
+			var sum=0;//每个班级的总分
+			for(var j=1;j<=4;j++){//内层循环控制班级中学生数量
+				var score=Number(prompt("请输入第"+j+"个学生的成绩："));
+				sum+=score;
+			}
+			var avg=sum/4;
+			console.log("第"+i+"个班级的平均分："+avg);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

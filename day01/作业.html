@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title></title>
+	<script type="text/javascript">
+		//1.定义两个变量num1和num2，并分别赋值为3和8，请问如何交换a和b的值
+		var num1=3;
+		var num2=8;
+		console.log("交换前的值："+num1+","+num2);
+
+		//方法一：使用临时变量进行交换
+		// var temp=num1; //3
+		// num1=num2; //8
+		// num2=temp; //3
+		// console.log("交换后的值："+num1+","+num2);
+
+
+		//方法二
+		num1=num1+num2; //11
+		num2=num1-num2; //3
+		num1=num1-num2; //8
+		console.log("交换后的值："+num1+","+num2);
+
+
+		//2.提示用户输入姓名和成绩，隔壁老王的成绩比他高5分，请分别输出当前用户和老王的信息
+		var name=prompt("请输入您的姓名");
+		 var score=prompt("请输入您的成绩");
+		 console.log("姓名:"+name);
+		 console.log("成绩:"+score);
+		 var a=Number(score);
+		 var score2=a+5;
+		 console.log("老王:"+score2);
+		
+	</script>
+</head>
+<body>
+
+</body>
+</html>	

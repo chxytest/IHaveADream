@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>itany</title>
+	<style type="text/css">
+		#mydiv{
+			color:blue;
+		}
+	</style>
+	<script type="text/javascript">
+		//属性
+		function doBackgroudColor(){
+			document.bgColor="red";
+		}
+
+		function doTitle(){
+			console.log(document.title);
+		}
+
+		function doBody(){
+			console.log(document.body);
+		}
+
+		//方法
+		function doWrite(){
+			//document.write("welcome to wbs16073!");
+			var window2=window.open(); //打开新窗口
+			window2.document.write("hello");
+		}
+
+		function doId(){
+			var obj=document.getElementById("mydiv");
+			console.log(obj); //返回单个对象
+		}
+
+		function doName(){
+			var objs=document.getElementsByName("hobby");
+			console.log(objs); //返回数组
+		}
+
+		function doTagName(){
+			var objs=document.getElementsByTagName("input");
+			console.log(objs.length);
+			console.log(objs);  //返回数组
+		}
+
+		//练习：
+		function doDiv(){
+			var mydiv=document.getElementById("mydiv");
+			//console.log(mydiv.innerHTML);
+			mydiv.innerHTML="嘿嘿嘿嘿"
+		} 
+
+		function doText(){
+			var myText=document.getElementById("username");
+			//console.log(myText.value);
+			myText.value="哈哈哈哈";
+		}
+
+	</script>
+</head>
+<body>
+	<input type="button" value="设置页面背景" onclick="doBackgroudColor()">
+	<input type="button" value="获取title" onclick="doTitle()">
+	<input type="button" value="获取body" onclick="doBody()">
+	<br/>
+	<input type="button" value="write" onclick="doWrite()">
+	<input type="button" value="getElementById" onclick="doId()">
+	<input type="button" value="getElementsByName" onclick="doName()">
+	<input type="button" value="getElementsByTagName" onclick="doTagName()">
+	<br/>
+	<input type="button" value="操作div中的文本" onclick="doDiv()">
+	<input type="button" value="操作文本框" onclick="doText()">
+
+
+	<hr/>
+	<div id="mydiv">第一个div</div>
+	<div id="mydiv">第二个div</div>
+
+	爱好：
+	<input type="checkbox" name="hobby" id="eat" value="eat"><label for="eat">吃饭</label>
+	<input type="checkbox" name="hobby" id="sleep" value="sleep"><label for="sleep">睡觉</label>
+	<input type="checkbox" name="hobby" id="doudou" value="doudou"><label for="doudou">打豆豆</label>
+	<hr/>
+	
+	用户名：<input type="text" id="username"/>
+
+</body>
+</html>

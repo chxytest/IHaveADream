@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//Date具有自动调节至正常日期的功能
+
+		// var date=new Date(2016,5,32);
+		// var date2=new Date(2000,1,30); //闰年，有29天，条件(二选一)：1.能被4整除，但不能被100整除 2.能被400整除
+		// var date3=new Date(1900,1,29); //平年，只有28天
+		// console.log(date3); 
+
+
+		//计算某年某月有多少天？
+		var year=prompt("请输入年份：")*1; //2000
+		var month=prompt("请输入月份：")*1;  //2
+		//方式1		
+		/*var d=new Date(year,month-1,31);
+		var day=d.getDate(); //可能的取值：31、1、2、3
+		if(day==31){
+			console.log("31天");
+		}else{
+			console.log(31-day+"天");
+		}*/
+		//方式2
+		var d=new Date(year,month,0); //2000,2,0
+		console.log(d.getDate()+"天");
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

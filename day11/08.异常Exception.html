@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//Exception异常处理，try...catch...finally
+		//try代码块，必须
+		//catch代码块，可选
+		//finally代码块，可选
+		//但catch和finally必须至少有一个
+
+		var num=5;
+		function fn(){
+			console.log("----程序即将开始运行----");
+			try{ //存放可能会出现异常的代码
+				console.log(num);
+				num++;
+				return;
+			}catch(e){ //捕获异常并处理
+				//console.log("系统出现异常，请稍后再试！");
+				document.write("系统出现异常，请稍后再试！");
+				console.log("系统出现异常，请联系管理员！异常消息："+e);
+			}finally{ //可选，存放必须要执行的代码
+				console.log("welcome to itany!");
+			}
+			console.log("Hello World!"); //未做异常处理时如果程序出错，会结束代码的执行
+		}
+
+		fn();
+
+
+		//计算两个整数之和，要求范围在[1,100]之间
+		function calc(m,n){
+			if(m<1||m>100||n<1||n>100){
+				//如果程序出现异常，但不知如何处理，此时可以抛出异常
+				throw new Error("数字无效，范围只能在1-100之间！");
+			}
+			var sum=m+n;
+			return sum;
+		}
+
+		function show(){
+			try{
+				var sum=calc(4,200);
+				console.log(sum);
+			}catch(e){
+				console.error("系统出现异常，消息："+e.message);
+				// console.log("系统出现异常，消息："+e.message);
+				// console.debug("系统出现异常，消息："+e.message);
+				// console.info("系统出现异常，消息："+e.message);
+			}
+		}
+
+		show();
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

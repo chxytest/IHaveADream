@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1.定义构造函数，相当于自定义了一个类型
+		function Student(){
+			//对象的属性
+			this.name="tom";
+			this.age=20;
+			this.sex="male";
+			//对象的方法
+			this.study=function(){
+				console.log("我是一个学生，正在学习！");
+			};
+			this.show=function(){
+				console.log(this.name);
+				console.log(this.age);
+				console.log(this.sex);
+			};
+		}
+
+		//2.调用构造函数，创建一个对象
+		/*var stu=new Student();
+		console.log("姓名："+stu.name);
+		stu.study();
+		stu.show();
+
+		var stu2=new Student();
+		stu2.show(); //所有学生的信息完全相同
+		
+		var stu3=new Student();
+		stu3.show();*/
+
+
+		function Computer(){
+			this.brand="";
+			this.typeName="";
+			this.price=0;
+			this.work=function(){
+				console.log("计算机正在工作："+this.brand+","+this.typeName+","+this.price);
+			};
+		}
+
+		var c1=new Computer();
+		c1.brand="联想";
+		c1.typeName="台式机";
+		c1.price=4600;
+		c1.work();
+
+		var c2=new Computer();
+		c2.brand="戴尔";
+		c2.typeName="笔记本";
+		c2.price=6600;
+		c2.work();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

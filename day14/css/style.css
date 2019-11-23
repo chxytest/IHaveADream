@@ -1,0 +1,16 @@
+.error{
+	font-size:12px;
+	color:red;
+}
+.ok{
+	color:green;
+}
+#tbl{
+	width:500px;
+}
+#tbl tr{
+	text-align:center;
+}
+#tf tr{
+	text-align:right;
+}

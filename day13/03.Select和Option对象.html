@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var $=function(id){
+			return document.getElementById(id);
+		};
+
+		window.onload=function(){
+			$("btnGet").onclick=function(){
+				var degree=$("degree");
+				console.log("数量："+degree.length);
+
+				var options=degree.options; //获取包含所有Option的数组
+				/*for(var i=0;i<options.length;i++){
+					var option=options[i];
+					// console.log(option);
+					console.log(option.value+"="+option.text);
+				}*/
+
+				console.log("当前选中项的索引："+degree.selectedIndex);
+				console.log("当前选中项的内容："+options[degree.selectedIndex].text);
+			};
+
+			$("btnAdd").onclick=function(){
+				// var option=document.createElement("option");
+				// option.value="boshihou";
+				// option.text="博士后";
+				// $("degree").add(option,null); //添加到末尾
+
+				// option.value="chuzhong";
+				// option.text="初中";
+
+				var option=new Option("初中","chuzhong");
+				$("degree").add(option,degree.options[1]); //添加为第2个
+			};
+
+			$("btnClear").onclick=function(){
+				// $("degree").length=0;
+				$("degree").length=1; //设置长度
+			};
+
+			$("btnSelect").onclick=function(){
+				$("degree").selectedIndex=3; //设置选中索引为3的选项
+			};
+		};
+
+		function getDegree(obj){
+			// var value=$("degree").options[$("degree").selectedIndex].value;
+			console.log("当前选中的值："+$("degree").value); //非标准属性，获取当前下拉列表中选中项的值
+			console.log("当前选中的值："+obj.value); 
+		}
+	</script>
+</head>
+<body>
+	<select id="degree" onchange="getDegree(this)">
+		<option value="0">--请选择学历--</option>
+		<option value="gaozhong">高中</option>
+		<option value="dazhuan">大专</option>
+		<option value="benke">本科</option>
+		<option value="yanjiusheng">研究生</option>
+		<option value="boshi">博士</option>
+	</select>
+	<input type="button" value="获取下拉列表信息" id="btnGet">
+	<input type="button" value="添加选项" id="btnAdd">
+	<input type="button" value="清空下拉列表" id="btnClear">
+	<input type="button" value="选中本科" id="btnSelect">
+</body>
+</html>

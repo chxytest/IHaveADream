@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css" media="screen">
+		li{
+			float: left;
+			list-style: none;
+			font-size: 12px;
+			background: url(images/bg3.gif) no-repeat;
+			color: #fff;
+			width: 104px;
+			height: 33px;
+			text-align: center;
+			line-height: 33px;
+		}
+		.over{
+			background:url(images/bg2.gif) no-repeat;
+			color: #FF7300;
+			font-size: 15px;
+			font-style: italic;
+		}
+		.out{
+			background:url(images/bg3.gif) no-repeat;
+			color: #FFF;
+			font-size: 12px;
+			font-style: normal;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload=function(){
+			var lis=document.getElementsByTagName("li");
+			for(var i=0;i<lis.length;i++){
+				lis[i].onmouseover=function(){
+					/*this.style.backgroundImage="url(images/bg2.gif)"; //this表示事件源，即发生事件的元素
+					this.style.color="#FF7300";
+					this.style.fontSize="15px";
+					this.style.fontStyle="italic";*/
+					this.className="over";
+				};
+				lis[i].onmouseout=function(){
+					/*this.style.backgroundImage="url(images/bg3.gif)";
+					this.style.color="#FFF";
+					this.style.fontSize="12px";
+					this.style.fontStyle="normal";*/
+					this.className="out";
+				};
+			}
+		};
+	</script>
+</head>
+<body>
+	<ul>
+		<li>资讯动态</li>
+		<li>产品世界</li>
+		<li>市场营销</li>
+	</ul>
+</body>
+</html>

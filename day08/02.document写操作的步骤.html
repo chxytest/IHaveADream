@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function doAdd(){
+			//1.创建新元素
+			var li=document.createElement("li");
+			//2.设置文本内容
+			var txt=document.createTextNode("itany4");
+			li.appendChild(txt);
+			//3.设置属性
+			li.setAttribute("id","fourth");
+			//4.找到父元素
+			var ul=document.getElementById("myul");
+			//5.追加
+			ul.appendChild(li);
+
+			//console.log(li);
+		}
+
+		function doAdd2(){
+			var tr=document.createElement("tr"); //创建行
+			for(var i=1;i<=5;i++){ //循环创建5个td
+				var td=document.createElement("td"); 
+				//td.appendChild(document.createTextNode("td"+i)); //通用方式
+				td.innerHTML="td"+i; //HTML特有的，只能在HTML中使用
+				tr.appendChild(td); //将td添加到tr中
+			}
+			//tr.setAttribute("align","center"); //通用方式
+			tr.align="right"; //HTML特有的，只能在HTML中使用
+			var table=document.getElementById("myTable");
+			table.appendChild(tr); //将tr添加到table中			
+			//console.log(tr);
+		}
+
+		function doElement(){
+			var tr=document.getElementById("mytr");
+			console.log("节点名称："+tr.nodeName);
+			console.log("节点类型："+tr.nodeType);
+			//获取子节点的集合
+			/*var childs=tr.childNodes; //会包含空白的文本节点
+			console.log(childs.length);
+			console.log(childs);
+			for(var i=0;i<childs.length;i++){
+				console.log(childs[i]);
+			}*/
+			//获取第一个子节点
+			/*var first=tr.firstChild;
+			console.log(first);
+			console.log(first.firstChild);*/
+			//获取父节点
+			/*var parent=tr.parentNode;
+			console.log(parent);*/
+			//获取属性的集合
+			var attributes=tr.attributes;
+			// console.log(attributes);
+			for(var i=0;i<attributes.length;i++){
+				console.log("属性名："+attributes[i].name+",属性值："+attributes[i].value);
+			}
+		}
+
+		function doLi(){
+			/*var lis=document.getElementsByTagName("li");
+			console.log(lis.length);*/
+			var myul2=document.getElementById("myul2"); //getElementById()方法只有document对象有
+			var lis=myul2.getElementsByTagName("li"); //在元素内部根据标签名查找
+			//console.log(lis.length);
+		}
+	</script>
+</head>
+<body>
+	<input type="button" value="添加一行" onclick="doAdd()">	
+	<input type="button" value="为表格添加一行" onclick="doAdd2()">	
+	<input type="button" value="获取元素" onclick="doElement()">	
+	<input type="button" value="在元素内部根据标签名查找" onclick="doLi()">	
+	<hr/>
+	<ul id="myul">
+		<li id="first">itany1</li>
+		<li>itany2</li>
+		<li>itany3</li>
+	</ul>
+	<br/>
+	<br/>
+
+	<table id="myTable" width="400px" border="1px" >
+		<thead id="th">
+			<tr id="mytr" name="itany"><th id="first">th1</th>
+				<th id="second">th2</th>
+				<th hello="world">th3</th>
+				<th>th4</th>
+				<th>th5</th>
+				<!-- 这是tr内容 --></tr>
+		</thead>
+	</table>
+
+	<ul id="myul2">
+		<li id="first">hello1</li>
+		<li>hello2</li>
+	</ul>
+</body>
+</html>

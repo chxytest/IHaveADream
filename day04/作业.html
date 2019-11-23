@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//产生[0.0,1.0)之间的随机数
+		// console.log(Math.random());
+		//产生[0,100)之间的随机整数
+		// var x=parseInt(Math.random()*100+"");
+		// console.log(x);
+
+		/*
+			1.猜字游戏：
+			随机产生一个[1,99]之间的随机整数，提示用户输入猜的数字，并提示猜大了或猜小了
+			最多有5次机会，如果猜中，恭喜用户并告之中奖数字及猜的次数。
+		*/	
+		/*var a=parseInt(Math.random()*99+1);
+		console.log(a);
+		var b;
+		for(i=1;i<=5;i++){
+			b=Number(prompt("请输入一个数字"));
+			if(b>a){
+					alert("猜大了,猜了："+i+"次");
+			}else if(b<a){
+					alert("猜小了,猜了："+i+"次");
+			}else{
+				alert("恭喜猜中了,你一共猜了"+i+"次,中奖数字为："+a);
+				break;
+			}
+		}
+		if(i>5){
+			alert("您太衰了，机会用完，请重新开始游戏！");
+		}*/
+
+
+		// 2.提示输入班级人数，然后循环获取每位学员的考试成绩，并输出前三名（不允许使用数组）
+		var first=0,second=0,third=0;
+		var num=Number(prompt("请输入班级人数："));
+		for(var i=1;i<=num;i++){
+			var score=Number(prompt("请输入第"+i+"个学员的成绩："));
+			if(score>first){
+				third=second;
+				second=first;
+				first=score;
+			}else if(score>second){
+				third=second;
+				second=score;
+			}else if(score>third){
+				third=score;
+			}
+		}
+		console.log("第一名："+first);
+		console.log("第二名："+second);
+		console.log("第三名："+third);
+
+
+		// 3.将数组中的元素用-短横线拼接在一起
+		var array=["tom","jack","mike","alice"];
+		//方式一
+		  /*var array=["tom","jack","mike","alice"];
+		  var str="";
+		  for(var i=0;i<array.length;i++){
+		  	if(i == array.length-1){
+		  		str+=array[i];
+		  		break;
+		  	}
+		  	str+=array[i]+"-";
+		  	console.log(str);
+		  }
+		  console.log(str);*/
+
+		//方式二
+		/*var array=["tom","jack","mike","alice"];
+		var str="";
+	    for(var i=0;i<array.length-1;i++){
+	    	str=str+array[i]+"-";
+	    }
+	    str=str+array[array.length-1]
+	    console.log(str); */ 
+
+
+		// 4.找出数组中的非0元素，将其存入一个新数组中
+		var nums=[2,4,0,23,58,0,120,3,22,9,0,65];
+		/*var news=[];
+		for(var i=0;i<nums.length;i++){
+			if(nums[i]!=0){
+				news[news.length]=nums[i];
+
+			}
+
+		}
+		document.write(news);*/
+
+		// 5.将数组中的元素反转后存入另一个新数组中
+		/*var myArray=[13,25,38,6,11,250,8];
+		var newArray=[];
+		for(var i = myArray.length-1;i >= 0 ; i--){ 
+			newArray[newArray.length]=myArray[i];
+		}
+		console.log(newArray);*/
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

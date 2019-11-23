@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//基本数据类型：string、number、boolean...
+		//引用数据类型：Math、Array、Date、String、Number、Boolean...
+
+		var student="tom"; //使用字面量定义字符串
+		/*student.age=20; //不能为基本类型string添加属性，只有引用类型才能添加属性
+		student.study=function(){
+			console.log("我是一个学生，正在学习！");
+		};*/
+		// console.log(student.age); //undefined 
+		// student.study(); //报错
+
+		//基本数据类型本身是没有方法的，也无法调用方法
+		var c=student.charAt(2); //此处能调用方法是因为后台自动创建了其包装类型
+		console.log(c);
+
+
+		var user=new String("alice"); //使用构造函数定义字符串
+		user.age=24; //可以为包装类型String添加属性，但此处不建议这样做，因为这样会导致分不清其到底是基本类型还是引用类型
+		user.run=function(){
+			console.log("正在奔跑！");
+		};
+		console.log(user.age);
+		user.run();
+
+		/*
+			结论：
+			使用字面量创建的字符串是基本数据类型
+			使用构造函数创建的字符串是引用数据类型
+		*/
+
+		//Number和Boolean也相同
+		var num1=12;
+		console.log(num1.toString());
+
+		var num2=new Number(24);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

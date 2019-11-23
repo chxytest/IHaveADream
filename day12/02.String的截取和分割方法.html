@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var str="welcome to itany!";
+		// console.log(str);
+
+		/*
+			截取方法
+		*/
+		//substr()
+		/*var s1=str.substr(2,3);
+		console.log(s1);
+		console.log(str.substr(2)); //如果未指定第二个参数，表示截取到末尾
+		console.log(str.substr(-5)); //支持负数，表示从后面数的第几个开始截取
+		console.log(str.substr(-5,2));*/
+
+		//substring()，常用
+		/*console.log(str.substring(2,3)); //不包括右边界[2,3)
+		console.log(str.substring(2));
+		console.log(str.substring(-5)); //不支持负数，会从头开始截取
+		console.log(str.substring(-5,2));
+		console.log(str.substring(5,2)); //具有自动交换能力，相当于str.substring(2,5)*/
+		
+		//slice()
+		/*console.log(str.slice(2,3));
+		console.log(str.slice(2));
+		console.log(str.slice(-5)); //支持负数，表示从后面数的第几个开始截取
+		console.log(str.slice(-5,2)); //不具有自动交换能力
+		console.log(str.slice(5,2));*/
+
+
+		/*
+			分割方法
+		*/
+		/*var str2="tom,jack,alice,mike";
+		// var names=str2.split(",");
+		// var names=str2.split(",",2); //第二个参数表示分割后返回的数量
+		var names=str2.split(""); //每个字符进行分割
+		console.log(names.length);
+		console.log(names);*/
+
+
+		//fromCharCode()
+		/*var c=String.fromCharCode(97); //a
+		console.log(c);
+		console.log(String.fromCharCode(98)); //b
+		console.log(String.fromCharCode(65)); //A
+		console.log(String.fromCharCode(66)); //B*/
+
+		//trim() 去除字符串开头和末尾的空格
+		var str="  ita ny ";
+		console.log(str.length);
+		str=str.trim();
+		console.log(str.length);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//不使用对象时操作太麻烦
+		/*var name="tom";
+		var age=24;
+		var sex="男"; 
+		var address="南京";
+		var height=180.5;
+		var weight=155;
+
+		var name2="jack";
+		var age2=21;
+
+		console.log("姓名："+name);
+		console.log("年龄："+age);
+		console.log("性别："+sex);
+		console.log("体重："+weight);*/
+
+		//对象的基本用法
+		//1.创建对象
+		/*var stu1=new Object();
+		//2.为对象添加属性并赋值
+		stu1.name="tom";
+		stu1.age=24;
+		stu1.sex="男";
+		stu1.address="南京";
+		//3.获取属性值
+		console.log("姓名："+stu1.name);
+		console.log("年龄："+stu1["age"]);
+		console.log("性别："+stu1["sex"]);
+		console.log("地址："+stu1.address);
+
+		var stu2=new Object();
+		stu2.name="alice";
+		stu2.age=23;
+		stu2.sex="女";
+		stu2.hobby="吃货";
+		console.log(stu2.name+","+stu2.age+","+stu2.sex+","+stu2.hobby);*/
+		
+
+		//为对象添加属性(特征)和方法(行为)
+		var stu=new Object();
+		//添加属性
+		stu.name="张三";
+		stu.age=23;
+		//添加方法，方法其本质上就是一个属性，只不过属性值为函数
+		stu.study=function(){
+			console.log("我是一个学生，正在学习！");
+		};
+		stu.sayHi=function(){
+			//console.log("大家好，我叫"+name);
+			//console.log("大家好，我叫"+stu.name);
+			console.log("大家好，我叫"+this.name); //this表示当前这个对象
+		};
+
+		//调用属性
+		console.log(stu.name);
+		console.log(stu["age"]);
+		//调用方法
+		stu.study();
+		stu.sayHi();
+		stu["sayHi"]();
+
+		stu.name="盖伦";
+		stu.sayHi();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

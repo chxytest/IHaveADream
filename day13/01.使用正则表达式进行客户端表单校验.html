@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.error{
+			font-size: 12px;
+			color: red;
+		}
+		.ok{
+			font-size: 12px;
+			color: green;
+		}
+	</style>
+	<script type="text/javascript">
+		function checkInput(){
+			return checkUsername()&&checkPassword()&&checkRepassword();
+		}
+
+		//用户名由数字、字母、下划线、点、横线、中文字符、空格组成，只能以数字或字母开头和结尾，且长度在3-14之间
+		function checkUsername(){
+			var regUsername=/^[\da-z][\u4E00-\u9FA5\w. -]{1,12}[\da-z]$/i;
+			var username=$("username").value.trim();
+			if(!regUsername.test(username)){
+				// alert("用户名由数字、字母、下划线、点、横线、中文字符组成！");
+				$("usernameInfo").innerHTML="用户名由数字、字母、下划线、点、横线、中文字符组成！";
+				$("usernameInfo").className="error";
+				//$("username").focus();
+				$("username").select();
+				return false;
+			}
+			$("usernameInfo").innerHTML="OK";
+			$("usernameInfo").className="ok";
+			$("username").value=username;
+			return true;
+		}
+
+		//密码只能由数字和字母组成，长度为6-10位
+		function checkPassword(){
+			var regPassword=/^[\da-z]{6,10}$/i;
+			if(!regPassword.test($("password").value)){
+				$("passwordInfo").innerHTML="密码只能由数字和字母组成，长度为6-10位！";
+				$("passwordInfo").className="error";
+				return false;
+			}
+			$("passwordInfo").innerHTML="OK";
+			$("passwordInfo").className="ok";
+			return true;
+		}
+
+		//两次输入的密码必须相同
+		function checkRepassword(){
+			if($("repassword").value!=$("password").value){
+				$("repasswordInfo").innerHTML="两次输入的密码不一致！";
+				$("repasswordInfo").className="error";
+				return false;
+			}
+			$("repasswordInfo").innerHTML="OK";
+			$("repasswordInfo").className="ok";
+			return true;
+		}
+
+		//出生日期，年份在1900-今年之间，格式为yyyy-mm-dd
+
+		//手机号码，11位，以1开头
+
+		//年龄为1-120
+
+		//身份证，15或18位，18位身份证最后一位可以为x，如32138119900213383X
+
+
+
+		var $=function(id){
+			return document.getElementById(id);
+		};
+
+		//对于IE浏览器需要自行为String添加trim方法
+		String.prototype.trim=function(){
+			var reg=/^\s+|\s+$/g;
+			return this.replace(reg,"");
+		};
+	</script>
+</head>
+<body>
+	<h1>用户注册</h1>
+	<form action="success.html" onsubmit="return checkInput()">
+		<table>
+			<tr>
+				<td>用户名：</td>
+				<td>
+					<input type="text" id="username" placeholder="请输入用户名" onblur="checkUsername()">
+					<span id="usernameInfo"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>密码：</td>
+				<td>
+					<input type="text" name="" id="password" onblur="checkPassword()">
+					<span id="passwordInfo"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>确认密码：</td>
+				<td>
+					<input type="text" name="" id="repassword" onblur="checkRepassword()">
+					<span id="repasswordInfo"></span>
+				</td>
+			</tr>
+			<tr>
+				<td>出生日期：</td>
+				<td><input type="text" name="" id="birthday"></td>
+			</tr>
+			<tr>
+				<td>手机号码：</td>
+				<td><input type="text" name="" id=""></td>
+			</tr>
+			<tr>
+				<td>年龄：</td>
+				<td><input type="text" name="" id=""></td>
+			</tr>
+			<tr>
+				<td>身份证：</td>
+				<td><input type="text" name="" id=""></td>
+			</tr>
+			<tr>
+				<td>固定电话：</td>
+				<td><input type="text" name="" id=""></td>
+			</tr>
+			<tr>
+				<td>电子邮箱：</td>
+				<td><input type="text" name="" id=""></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="注  册">
+					<input type="reset" value="重  置">
+				</td>
+			</tr>
+		</table>
+
+	</form>
+</body>
+</html>

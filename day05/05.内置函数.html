@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="js/itany.js"></script>
+	<script type="text/javascript">
+		//特定计算eval()，用于计算某个字符串，并执行其中的的JavaScript代码
+		/*var str="5+8";
+		console.log(eval(str));*/
+
+		/*var x=5,y=8;
+		//var str="x+y";
+		var str="if(x>y){x*x}else{y*y}";
+		console.log(eval(str));*/
+
+		// eval("var a=6;alert(a);");
+
+
+		//isNaN()
+		/*console.log(isNaN(12));  //false
+		console.log(isNaN("aa")); //true
+		var a;
+		console.log(isNaN(a)); //true
+		console.log(isNaN(null)); //false
+		console.log(parseInt(null)); //NaN
+		console.log(+null); //0
+		// console.log(null+4); //null不是数字，但在运算时会被转化为0*/ 
+
+		//isFinite()
+		/*console.log(isFinite(12));
+		console.log(isFinite("aa"));
+		console.log(isFinite(5/0));
+		console.log(5/0); //无限大，无穷大*/
+
+
+		//编码和解码
+		// file:///Users/appleuser/Desktop/JavaScript/demo/day05/05.%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html?username=%E6%9F%8F%E5%80%A9
+
+		/*var str="itany南京网博";
+		var s1=encodeURI(str); //使用ISO8859-1编码
+		console.log(s1);
+		var s2=decodeURI(s1); //解码
+		console.log(s2);
+
+		var s3=escape(str);
+		console.log(s3); //使用Unicode编码
+		var s4=unescape(s3);
+		console.log(s4); //解码*/
+
+
+		//练习：提示用户输入正整数，如果不合法，则给出提示并让用户再次输入，直到输入合法为止
+		/*while(true){
+			num=prompt("请输入一个正整数：");
+			if(!isNaN(num)&&num>0&&parseInt(num)==num){
+				break;
+			}
+			console.log("输入有误，请重新输入！");
+		}
+		console.log(num);*/
+
+		//calcSum();
+	</script>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="username" />
+		<input type="submit" value="提交" />
+	</form>
+</body>
+</html>

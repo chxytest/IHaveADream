@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1.阅读以下代码，并写出结果：undefined、10
+		/*var a=100;
+		function test(){
+			alert(a);
+			var a=10;
+			alert(a);
+		}
+		test();*/
+
+		//变量提升
+		/*var a;
+		function test(){
+			var a;
+
+			alert(a);
+			a=10;
+			alert(a);
+		}
+
+		a=100;
+		test();*/
+
+
+		//2.自定义函数，实现交换数组中两个元素的功能，带三个参数
+		/*function switchArray(array,i,j){
+			var temp=array[i];
+			array[i]=array[j];
+			array[j]=temp;
+			return array;
+		}
+		var nums=[12,4,23,520,37,0,2];
+		nums=switchArray(nums,0,3);
+		console.log(nums);*/
+
+
+		//3.自定义函数，实现复制数组的功能，带两个参数
+		function copyArray(src,dest){
+			for(var i=0;i<src.length;i++){
+				dest[i]=src[i];
+			}
+		}
+		var nums=[12,4,23,520,37,0,2];
+		var myNums=[];
+		console.log(myNums);
+		copyArray(nums,myNums);
+		console.log(myNums); //数组是一个引用数据类型（后面会详细讲解）
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function show1(){
+			console.log("welcome to wbs16073!");
+		}
+
+		function show2(){
+			//console.log("欢迎来到南京网博！");
+			alert("欢迎来到南京网博！");
+		}
+
+
+		//当点击页面时执行函数show2
+		//window.onclick=show2();
+		window.onclick=show2; //回调函数，即回头再调用此函数，不能加小括号
+	</script>
+</head>
+<body>
+	<input type="button" value="点我" onclick="alert('被点击了！')" />
+	<input type="button" value="按钮1" onclick="show1()" />
+</body>
+</html>

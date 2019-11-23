@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		var a=5; 
+
+		//1.函数中的this，表示调用函数的当前对象
+		function fn(){
+			var a=8;
+			console.log("fn函数");
+			console.log(this); //此处this表示window，因为是window调用的此函数
+			//解决局部变量和全局变量同名问题
+			console.log(a);
+			console.log(this.a);
+			console.log(window.a);
+		}
+
+		//fn();
+		//window.fn(); //验证确实是window调用了此函数
+
+
+		//2.构造函数中的this，表示将来new出来的当前对象
+		var name="老宋";
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+			this.show=function(){
+				console.log(this.name);
+				console.log(this.age);
+				console.log(name); //如果没有使用this，会产生closure（闭包）
+				console.log(window.name);
+			};
+		}
+
+		var p=new Person("张三",23);
+		p.name="李四";
+		p.show();
+
+
+		//3.事件绑定的匿名回调函数中的this，表示事件源（发生事件的元素）
+		window.onload=function(){
+			var btn=document.getElementById("btn");
+			btn.onclick=function(){
+				console.log(this.value);
+			};
+		};
+
+	</script>
+</head>
+<body>
+	<input type="button" value="点我" id="btn">
+</body>
+</html>

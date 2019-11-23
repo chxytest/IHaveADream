@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//将基本数据类型作为方法的参数，不会影响外部变量
+		/*function fn1(a){
+			a=100;
+		}
+		var x=5;
+		fn1(x); //传递的是数值，按值传递
+		console.log(x); //x的值不变*/
+
+
+		//将引用数据类型作为的参数，会影响外部变量
+		/*function Student(name,age,salary){
+			this.name=name;
+			this.age=age;
+			this.salary=salary;
+		}
+		function fn2(stu){
+			stu.name="alice";
+			stu.age=30;
+			stu.salary=8000;
+		}
+		var stu1=new Student("tom",24,6600);
+		fn2(stu1); //传递的是地址，按引用传递
+		console.log(stu1);*/
+
+
+		function fn3(array){
+			array[0]=666;
+		}
+		var nums=[12,3,42,56,2];
+		fn3(nums);
+		console.log(nums);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

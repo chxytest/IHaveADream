@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		console.log("原始数据："+nums);
+
+		// 外层循环控制比较的轮数，每一轮确定一个数字
+		for(var i=0;i<nums.length-1;i++){
+			//内层循环控制每一轮比较的次数
+			for(var j=0;j<nums.length-i-1;j++){
+				if(nums[j]>nums[j+1]){ //升序
+					var temp=nums[j];
+					nums[j]=nums[j+1];
+					nums[j+1]=temp;
+				}
+			}
+			console.log("第"+(i+1)+"轮："+nums);
+		}
+		console.log("最终结果："+nums);
+
+		//结论：如果有n个元素，则需要比较n-1轮，每一轮比较n-m次，m表示第几轮
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//循环结构：while、do...while、for
+
+		//while循环
+		//循环输出10次Hello JavaScript
+		/*var i=1;
+		while(i<=10){
+			// console.log("Hello JavaScript");
+			document.write("Hello JavaScript<br/>");
+			//alert("Hello JavaScript");
+			i++; //i=i+1;
+		}*/
+
+		//计算100以内所有整数之和
+		/*var j=1;
+		var sum=0;
+		while(j<=100){
+			sum+=j; //sum=sum+j; //累加求和
+			j++;
+		}
+		console.log("100以内所有整数之和："+sum);*/
+
+		//计算100以内所有奇数之和
+		/*var j=1;
+		var sum=0;
+		while(j<=100){
+			if(j%2!=0){ //判断是否为奇数
+				sum+=j; //sum=sum+j; //累加求和
+			}
+			j++;
+		}
+		console.log("100以内所有奇数之和："+sum);*/
+
+		//打印输出[1,200]之间能被7整除，但不能被4整除的所有整数，并统计个数
+		//额外要求：输出时每行显示5个
+		var i=1;
+		var count=0; //个数
+		while(i<=200){
+			if(i%7==0&&i%4!=0){
+				count++; //统计个数
+				if(count%5==0){ //判断每输出5个，换一行
+					document.write("<br/>");
+				}
+				document.write(i+"&nbsp;&nbsp;&nbsp;&nbsp;");
+			}
+			i++;
+		}
+		document.write("<br/>共计："+count+"个!");
+
+	</script>	
+</head>
+<body>
+	
+</body>
+</html>

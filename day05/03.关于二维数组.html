@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//二维数组可以认为是特殊的一维数组，即一维数组中的每个元素又是一个一维数组
+		var nums=new Array();
+		nums[0]=new Array();
+		nums[0][0]=13;
+		nums[0][1]=15;
+		nums[0][2]=7;
+		nums[0][3]=29;
+		nums[0][4]=16;
+		nums[1]=new Array();
+		nums[1][0]=2;
+		nums[1][1]=8;
+		nums[1][2]=12;
+		nums[1][3]=85;
+		nums[1][4]=100;
+		nums[2]=new Array();
+		nums[2][0]=11;
+		nums[2][1]=22;
+		nums[2][2]=33;
+		nums[2][3]=44;
+		nums[2][4]=55;
+
+		// console.log("第二行第三列："+nums[1][2]);
+		// console.log("行数："+nums.length);
+		// console.log("第一行的列数："+nums[0].length);
+
+		//使用二重循环遍历输出
+		/*for(var i=0;i<nums.length;i++){ //外层循环控制行数
+			for(var j=0;j<nums[i].length;j++){ //内层循环控制每行的列数
+				document.write(nums[i][j]+"&nbsp;&nbsp;");
+			}
+			document.write("<br/>");
+		}*/
+
+		var array=new Array();
+		//循环生成四行
+		for(var i=0;i<4;i++){
+			array[i]=new Array();
+			//循环生成四列，并为每列产生一个随机数
+			for(var j=0;j<4;j++){
+				array[i][j]=parseInt(Math.random()*99+1);
+			}
+		}
+		//console.log(array);
+		for(var i=0;i<array.length;i++){ 
+			for(var j=0;j<array[i].length;j++){
+				document.write(array[i][j]+"&nbsp;&nbsp;");
+			}
+			document.write("<br/>");
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

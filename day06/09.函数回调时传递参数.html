@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		/*function show(){
+			console.log("页面被第"+i+"次点击！");
+			i++;
+		}*/
+
+		function show(count){
+			if(i<=count){
+				console.log("页面被第"+i+"次点击！");
+				i++;
+			}
+		}
+
+		//window.onclick=show;
+		window.onclick=function(){ //如果回调函数需要传递参数，可以使用匿名函数来包裹函数，进行传参
+			show(5);
+		};
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//typeof和instanceof区别
+		//typeof可以判断任意变量的类型，在判断对象的类型时候，typeof总是返回object
+		//instanceof只能判断对象的类型，返回对象的精确类型
+
+		var num=25;
+		var name="tom";
+		var flag=true;
+		var a=null;
+		var nums=[12,4,54];
+		var array=new Array();
+		var stu={id:1001,name:"jack"};
+		var p=new Person("alice",20);
+
+		/*console.log(typeof num);
+		console.log(typeof name);
+		console.log(typeof flag);
+		console.log(typeof a);
+		console.log(typeof nums);
+		console.log(typeof array);
+		console.log(typeof stu);
+		console.log(typeof p);*/
+
+		console.log(nums instanceof Array);
+		console.log(nums instanceof Person);
+		console.log(stu instanceof Person);
+		console.log(p instanceof Person);
+
+		if(stu instanceof Array){
+			console.log("stu是一个数组");
+		}
+
+
+		function Person(name,age){
+			this.name=name;
+			this.age=age;
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

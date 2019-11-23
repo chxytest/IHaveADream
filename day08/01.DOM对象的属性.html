@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//当页面加载完成后再执行，否则获取不到
+		window.onload=function(){
+			/*var obj=document.getElementById("baidu"); //DOM对象
+			//console.log(obj);
+			console.log(obj.href);
+			console.log(obj.target);
+			obj.href="http://www.qq.com";*/
+
+			// console.log($("mydiv").inenrHTML);
+			// console.log($("mydiv").innerText); //只获取文本，忽略标签
+			// $("mydiv").innerHTML="<h1>itany<h1/>";
+			// $("mydiv").innerText="<h1>itany<h1/>";
+
+
+		};
+
+		//练习：
+		function doChange(){
+			//console.log($("baidu").checked); //单选按钮的状态：true、false
+			if($("baidu").checked){
+				$("myFrm").action="http://www.baidu.com/s";
+				$("btnSearch").value="百度搜索";
+				$("logo").src="images/baidu.png";
+				$("txtSearch").name="wd";
+			}else if($("google").checked){
+				$("myFrm").action="http://www.google.com"; //打不开网站，看不到
+				$("btnSearch").value="谷歌搜索";
+				$("logo").src="images/google.png";
+			}else{
+				$("myFrm").action="http://cn.bing.com/search";
+				$("btnSearch").value="必应搜索";
+				$("logo").src="images/bing.jpeg";
+				$("txtSearch").name="q";
+			}
+		}
+
+		function $(id){
+			return document.getElementById(id);
+		}
+	</script>
+</head>
+<body>
+	<!-- <a id="baidu" href="http://www.baidu.com" target="_blank">百度</a> -->
+	<!-- <div id="mydiv">
+		<p>welcome to itany!</p>
+	</div> -->
+	
+	<input type="radio" name="search" id="baidu" checked="checked" onclick="doChange()" />
+	<label for="baidu">百度</label>
+	<input type="radio" name="search" id="google" onclick="doChange()"/>
+	<label for="google">谷歌</label>
+	<input type="radio" name="search" id="bing" onclick="doChange()"/>
+	<label for="bing">必应</label>
+	<br/>
+	<form id="myFrm" action="http://www.baidu.com/s">
+		<img src="images/baidu.png" style="width:70px;height:40px;" id="logo"/>
+		<input type="text" name="wd" id="txtSearch" placeholder="请输入查询关键字">
+		<input type="submit" value="百度搜索" id="btnSearch">
+	</form>
+</body>
+</html>

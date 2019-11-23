@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1.函数声明
+		/*function fn(num1,num2){
+			return num1+num2;
+		}
+		console.log(fn(2,6));*/
+
+		//2.函数表达式
+		//var a=5;
+		/*var fn=function(num1,num2){ //没有名字的函数，称为匿名函数
+			return num1+num2;
+		};
+		console.log(fn(3,7));*/
+
+
+		/*
+		 两种方式的区别：
+		 函数声明在编写时可以先调用，再声明；函数表达式必须先定义，再调用
+		*/
+		fn1();
+		function fn1(){
+			console.log("fn1");
+		}
+		
+		fn2(); //报错
+		var fn2=function(){
+			console.log("fn2");
+		};
+		//fn2();
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

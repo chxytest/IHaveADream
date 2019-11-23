@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//1.下面代码的输出结果是？ 结果：undefined、2
+		/*function test(){
+			console.log(a);
+			console.log(foo());
+			var a=1;
+			function foo(){
+				return 2;
+			}
+		}
+		test();*/
+
+		function test(){
+			var a;
+			function foo(){
+				return 2;
+			}
+			console.log(a);
+			console.log(foo());
+			a=1;
+		}
+		test();
+
+
+		//2.计时器
+		var r=0;
+		var l=0;
+		var timer;
+		function doStart(){
+			$("start").disabled=true;
+			$("stop").disabled=false;
+			timer=setInterval(go, 100);
+
+		}
+
+		function go(){
+			r++;
+			if(r>9){
+				r=0;
+				l++;
+			}
+			if(l>9){
+				r=0;
+				l=0;
+			}
+			$("imgr").src="number/"+r+".bmp";
+			$("imgl").src="number/"+l+".bmp";
+		}
+
+		function doStop(){
+			$("start").disabled=false;
+			$("stop").disabled=true;
+			clearInterval(timer);
+		}
+
+		function $(id){
+			return document.getElementById(id);
+		}
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td><img src="number/0.bmp"  id="imgl"></td>
+			<td><img src="number/0.bmp"  id="imgr"></td>
+		</tr>
+		<tr>
+			<td><input type="button" value="开始" id="start" onclick="doStart()"></td>
+			<td><input type="button" value="停止" id="stop" onclick="doStop()" disabled></td>
+		</tr>
+	</table>
+	
+</body>
+</html>

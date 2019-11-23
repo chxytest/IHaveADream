@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+		/*
+			闰年：能被4整除但不能被100整除，或者能被400整除的年份   2016   2015  1900
+			闰年的2月有29天，平年的2月有28天
+		*/	
+		window.onload=function(){
+			var selYear=$("year");
+			var selMonth=$("month");
+			var selDate=$("date");
+
+			//向下拉列表中添加Option
+			addOption(selYear,1990,new Date().getFullYear());
+			addOption(selMonth,1,12);
+			addOption(selDate,1,31);
+
+			//设置默认显示当前时间
+			var today=new Date();
+			changeDate(today.getFullYear(),today.getMonth()+1,today.getDate());
+
+			//为下拉列表绑定事件
+			selYear.onchange=function(){
+				var year=$("year").value;
+				var month=$("month").value;
+				changeDate(year,month,1);
+			};
+			selMonth.onchange=function(){
+				var year=$("year").value;
+				var month=$("month").value;
+				changeDate(year,month,1);
+			};
+
+		};
+
+		//定义一个函数，实现添加Option的功能
+		function addOption(sel,start,end){
+			for(var i=start;i<=end;i++){
+				var option=new Option(i,i);
+				sel.add(option,null);
+			}
+		}
+
+		//定义一个函数，实现修改日期的功能
+		function changeDate(year,month,date){  //2015,2
+			//获取某年某月的天数
+			var days=new Date(year,month,0).getDate(); //2015,2   2015,3 0
+			//清空下拉列表(日)，重新添加
+			$("date").length=0;
+			addOption($("date"),1,days);
+			
+			$("year").value=year;
+			$("month").value=month;
+			$("date").value=date;
+		}
+
+
+		var $=function(id){
+			return document.getElementById(id);
+		};
+	</script>
+</head>
+<body>
+	<select id="year"></select>年
+	<select id="month"></select>月
+	<select id="date"></select>日
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//方式一：直接使用Array	
+		/*
+		var nums=new Array(); //创建一个空数组，长度为0
+		var nums=new Array(3); //创建长度为3的数组
+		//console.log(nums.length);	
+		nums[3]=13; //数组长度会自动扩展
+		nums[4]=25;
+		console.log(nums);
+		console.log(nums.length);*/
+
+		//创建数组的同时添加元素
+		//var names=new Array("tom"); 
+		// var names=new Array("tom","jack","alice"); 
+		// console.log(names);
+
+
+		//方式二：使用数组字面量
+		/*var hobbies=[];
+		hobbies[0]="吃饭";
+		hobbies[1]="睡觉";
+		hobbies[2]="打豆豆";*/
+		var hobbies=["吃饭","睡觉","打豆豆"];
+		//console.log(hobbies);
+
+		//使用while循环输出数组中的元素
+		/*var i=0;
+		while(i<hobbies.length){
+			console.log(hobbies[i]);
+			i++;
+		}*/
+		//使用for...in遍历数组中的元素
+		for(var i in hobbies){
+			console.log(i+"="+hobbies[i]);
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

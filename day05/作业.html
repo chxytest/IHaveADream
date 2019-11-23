@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		//求圆的面积;
+		/*function circleArea(){
+			var r=Number(prompt("请输入半径的值："));
+			var area=Math.PI*r*r;
+			console.log(area)
+		}
+		circleArea();*/
+
+			
+		//求圆的周长
+		/*function circleLength(r){
+			var c=2*Math.PI*r;
+			console.log(c);
+		}	
+		var r=Number(prompt("请输入圆的半径："));
+		circleLength(r);*/
+
+		//求2个数字中最大值
+		function  max1(x,y){
+			console.log("max1------1111");
+			/*if (x>=y) {
+				return x;
+			}else {
+				return y;
+			}*/
+			/*var max;
+			if(x>=y){
+				max=x;
+			}else{
+				max=y;
+			}
+			return max;*/
+			return  x>y?x:y;
+		}
+		/*var x=Number(prompt("请输入x的值："));
+		var y=Number(prompt("请输入y的值："));
+		var result=max1(x,y);
+		console.log("最大值："+result);*/
+
+		//3.求三个数中的最大值
+		/*function max2(x,y,z){
+			//return (x>y?x:y)>z?(x>y?x:y):z
+			//return max1(x,y)>z?max(x,y):z;
+			console.log("max2------1111");
+			var a=max1(x,y); //在函数中调用另一个函数，注意执行的过程
+			console.log("max2------2222");
+			return max1(a,z);
+		}
+		console.log(max2(5,2,8));*/
+
+
+		//4.求数组中的最大值，函数接收一个数组
+		/*function max3(array){
+			var max=array[0];
+			for(var i=0;i<array.length;i++){
+				if(array[i]>max){
+					max=array[i];
+				}
+			}
+			return max;
+		}
+		var nums=[213,12,4,2,12,56,34,200];
+		console.log(max3(nums));*/
+
+		//5.将数组反转，返回反转后的新数组
+		function reverse(array){
+			var newArray=[];
+			for(var i=array.length-1;i>=0;i--){
+				newArray[newArray.length]=array[i];
+			}
+			return newArray;
+		}
+		var nums=[213,12,4,2,12,56,34,200];
+		console.log(reverse(nums));
+		var names=["tom","jack","alice"];
+		console.log(reverse(names));
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

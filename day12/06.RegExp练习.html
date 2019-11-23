@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+
+		//判断身份证格式(要求支持新旧证)
+		function checkIDCard(){
+			var reg=/^[1-9]\d{14}(\d{2}[\dX])?$/i;
+			var txt=document.getElementById("txt").value;
+			if(reg.test(txt)){
+				console.log("OK");
+			}else{
+				console.log("Invalid");
+			}
+		}
+
+		//判断电话号码格式：区号可选，可用（）或-分割区号，区号0开头，共3或4位；号码7或8位
+		function checkTel(){
+			var reg=/^(\(0\d{2,3}\)|0\d{2,3}-)?([1-9]\d{6,7})$/;
+			var txt=document.getElementById("txt").value;
+			if(reg.test(txt)){
+				console.log("OK");
+			}else{
+				console.log("Invalid");
+			}
+		}
+
+		//判断Email地址  t2_om@qq.org  tom@a.com.org
+		function checkEmail(){
+			var reg=/^\w+@\w+(\.[a-z]{2,3}){1,2}$/;
+			var txt=document.getElementById("txt").value;
+			if(reg.test(txt)){
+				console.log("OK");
+			}else{
+				console.log("Invalid");
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="txt" size="40">
+	<input type="button" value="判断身份证" onclick="checkIDCard()">
+	<input type="button" value="判断电话号码" onclick="checkTel()">
+	<input type="button" value="判断邮箱" onclick="checkEmail()">
+</body>
+</html>

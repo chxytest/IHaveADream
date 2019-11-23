@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+	tr{text-align: center;}
+	form{text-align: center;}
+	</style>
+	<script type="text/javascript"> 
+		function doAdd () {
+			//创建tr
+			var tr=document.createElement("tr");	
+			//创建td
+			var tdName=document.createElement("td");
+			var tdAge=document.createElement("td");
+			var tdSex=document.createElement("td");
+			var tdEmail=document.createElement("td");
+			var tdDelete=document.createElement("td");
+			//将姓名、年龄、性别、邮箱添加到td中
+			tdName.innerHTML=$("name").value;
+			tdAge.innerHTML=$("age").value;
+			tdSex.innerHTML=$("male").checked?$("male").value:$("female").value;
+			tdEmail.innerHTML=$("email").value;
+			//创建input按钮
+			var btnDelete=document.createElement("input");
+			btnDelete.type="button";
+			btnDelete.value="删除";
+			btnDelete.onclick=function(){ //绑定事件，实现删除当前行
+				//$("tb").removeChild(tr);
+				$("tb").removeChild(this.parentNode.parentNode);
+			};
+			tdDelete.appendChild(btnDelete);
+
+			//将td添加到tr中
+			tr.appendChild(tdName);
+			tr.appendChild(tdAge);
+			tr.appendChild(tdSex);
+			tr.appendChild(tdEmail);
+			tr.appendChild(tdDelete);
+			//将tr添加到table中
+			$("tb").insertBefore(tr,$("trDelete"))	 //添加到最后一行的前面
+		}
+
+		window.onload=function(){
+			$("btnDeleteFirst").onclick=function(){
+				var trs=$("tb").getElementsByTagName("tr");
+				$("tb").removeChild(trs[0]);
+			};
+
+			$("btnDeleteLast").onclick=function(){
+				var trs=$("tb").getElementsByTagName("tr");
+				$("tb").removeChild(trs[trs.length-2]);
+			};
+		};
+
+		function $(id){
+			return document.getElementById(id);
+		}
+	</script>
+</head>
+<body>
+<table id="table" border="1px" width="500px" height="100px" align="center">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Gender</th>
+			<th>Email</th>
+			<th>操作</th>
+		</tr>
+	</thead>
+	<tbody id="tb">
+		<tr>
+			<td>Mike</td>
+			<td>22</td>
+			<td>Male</td>
+			<td>mike@itany.com</td>
+			<td><input type="button" value="删除" onclick="" /></td>
+		</tr>
+		<tr style="text-align:right;" id="trDelete">
+			<td colspan="5">
+				<button id="btnDeleteFirst">从首行删除</button>
+				<button id="btnDeleteLast">从末行删除</button>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<p align="center">Pls Input Info</p>
+
+	<form action="" >
+		<span>Name:</span><input type="text" id="name"  />
+		<br/>
+		<span>Age:</span><input type="text"  id="age" />
+		<br/>
+		<span>Gender:</span>
+			<input type="radio" name="sex" id="male" value="男" checked="checked" />
+			<label for="male">Male</label>
+			<input type="radio" name="sex"  id="female" value="女" />
+			<label for="female">Female</label>
+		
+		<br/>
+		<span>Email:</span><input type="text" id="email"  />
+		<br/>
+		<input type="button"  value="添加" onclick="doAdd()" />
+		<input type="reset" value="重置">
+	</form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		// 1.提示用户输入一个整数，如:237849172，将其倒序输出271948732
+		var str="";
+		var a=prompt("请输入一个正整数：")
+		console.log(a);
+		var temp;
+		while(a>0){
+			temp=a%10;
+			str+=temp;
+			a=parseInt(a/10);
+		}
+		console.log(str);
+
+		// 2.输出1到1000之间5的倍数，并统计个数，要求每输出8个换一行显示
+		 var count=0;
+		 for(var i=1;i<=1000;i++){
+		 	if (i%5==0) {
+		 		count++;
+		 		document.write(i+"&nbsp&nbsp");
+		 	}
+		 	if(count%8==0){
+		 		document.write("<br>");
+		 	}
+
+		 }
+		 document.write("1到1000之间5的倍数的个数为："+count);
+
+		/*
+		 3.接收班级8名学生的考试成绩，要求判断成绩有效范围为[1,100]，否则提示成绩无效，并提示请重新输入
+		 根据平均分输出该班的等级，等级规则：按平均分划分
+		 	1）90-100之间，等级为A
+		 	2) 80-89之间，等级为B
+		 	3）70-79之间，等级为C
+		 	4）60-69之间，等级为D
+		 	5）60以下，等级为E
+		*/
+		var score;
+		var sum=0;
+		var avg=0;
+        
+        for(var k=0;k<8;k++){
+        	score=Number(prompt("请输入第"+(k+1)+"学生的成绩:"));
+            while(score<1||score>100){
+                score=Number(prompt("输入的成绩无效，请重新输入："));
+            }
+        	document.write("第"+(k+1)+"个学生的成绩为："+score+"<br/>");
+            sum+=score;
+        }
+        document.write("<br/>");
+        document.write("总分:"+sum);
+        document.write("<br/>");
+        avg=sum/8;
+        if(avg<=100&&avg>=90){
+        	document.write("平均分为:"+avg+"等级为A");
+        }else if(avg<=89&&avg>=80){
+        	document.write("平均分为:"+avg+"等级为B");
+        }else if(avg<=79&&avg>=70){
+        	document.write("平均分为:"+avg+"等级为C");
+        }else if(avg<=69&&avg>=60){
+        	document.write("平均分为:"+avg+"等级为D");
+        }else {
+        	document.write("平均分为:"+avg+"等级为E");
+        }
+
+		
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
