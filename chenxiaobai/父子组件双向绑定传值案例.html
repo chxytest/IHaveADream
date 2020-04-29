@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :cnum1="num1" :cnum2="num2" @changenumber1="changenumber1" @changenumber2="changenumber2"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>props: {{ cnum1 }}</h2>
+      <h2>data: {{ childrennum1 }}</h2>
+      <input type="text" :value="childrennum1" @input="inputNumber1">
+      <h2>props: {{ cnum2 }}</h2>
+      <h2>data: {{ childrennum2 }}</h2>
+      <input type="text" :value="childrennum2" @input="inputNumber2">
+    </div>
+  </template>
+
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        num1: 1,
+        num2: 0
+      },
+      methods: {
+        changenumber1(value) {
+          this.num1 = parseInt(value)
+        },
+        changenumber2(value) {
+          this.num2 = parseInt(value)
+        }
+      },
+      components: {
+        cpn: {
+          template: '#cpn',
+          props: {
+            cnum1: Number,
+            cnum2: Number
+          },
+          data() {
+            return {
+              childrennum1: this.cnum1,
+              childrennum2: this.cnum2
+            }
+          },
+          methods: {
+            inputNumber1() {
+              // 将输入框中的值赋给子组件中的 data
+              this.childrennum1 = event.target.value
+              // 并将子组件中 data 的值发送给父组件中绑定的对象 changenumber1
+              this.$emit('changenumber1', this.childrennum1)
+
+              // 并同时修改子组件中 data 的 childrennum2 的值，发送给父组件 changenumber2
+              this.childrennum2 = this.childrennum1 * 100
+              this.$emit('changenumber2', this.childrennum2)
+            },
+            inputNumber2() {
+              // 将输入框中的值赋给子组件中的 data
+              this.childrennum2 = event.target.value
+              // 并将子组件中 data 的值发送给父组件中绑定的对象 changenumber1
+              this.$emit('changenumber2', this.childrennum2)
+            }
+          },
+        }
+      }
+
+    })
+  </script>
+</body>
+
+</html>

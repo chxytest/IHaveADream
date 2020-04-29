@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./lib/vue-2.4.0.js"></script>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <span v-if="login === 'name'">
+            <label for="name">账号登录</label>
+            <input id="name" placeholder="用户账号">
+        </span>
+        <span v-else>
+            <label for="email">邮箱登录</label>
+            <input id="email" placeholder="用户邮箱">
+        </span>
+        <button @click="changeLogin()">切换登录方式</button>
+    </div>
+    <script>
+        const mv = new Vue({
+            el: '#app',
+            data: {
+                login: 'name',
+            },
+            methods: {
+                changeLogin() {
+                    this.login = this.login === 'email' ? 'name' : 'email'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
