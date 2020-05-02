@@ -6,7 +6,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  name: "about"
+  // created() {
+  //   document.title = "关于";
+  // }
+};
 </script>
 
 <style>

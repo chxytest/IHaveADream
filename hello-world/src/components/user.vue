@@ -9,6 +9,9 @@
 <script>
 export default {
   name: "user",
+  // created() {
+  //   document.title = "用户";
+  // },
   computed: {
     userId() {
       return this.$route.params.userid;
