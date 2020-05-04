@@ -6,8 +6,9 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
+    <tab-control class="tabcontrol" :titles="['流行', '新款', '精选']"></tab-control>
 
-    <lu>
+    <ul>
       <li>mogujie</li>
       <li>mogujie</li>
       <li>mogujie</li>
@@ -18,7 +19,107 @@
       <li>mogujie</li>
       <li>mogujie</li>
       <li>mogujie</li>
-    </lu>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+      <li>mogujie</li>
+    </ul>
   </div>
 </template>
 
@@ -28,6 +129,7 @@ import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
 import { getHomeMultidata } from "../../network/home";
+import TabControl from "../../components/content/tabcontrol/TabControl";
 
 export default {
   name: "Home",
@@ -35,7 +137,8 @@ export default {
     NavBar,
     HomeSwiper,
     RecommendView,
-    FeatureView
+    FeatureView,
+    TabControl
   },
   data() {
     return {
@@ -68,5 +171,11 @@ export default {
   right: 0;
   top: 0;
   z-index: 9;
+}
+.tabcontrol {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 40px;
+  background: white;
 }
 </style>
