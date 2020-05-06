@@ -6,120 +6,8 @@
     <home-swiper :banners="banners"></home-swiper>
     <recommend-view :recommends="recommends"></recommend-view>
     <feature-view></feature-view>
-    <tab-control class="tabcontrol" :titles="['流行', '新款', '精选']"></tab-control>
-
-    <ul>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-      <li>mogujie</li>
-    </ul>
+    <tab-control class="tabcontrol" :titles="['流行', '新款', '精选']" @tabclick="tabclick"></tab-control>
+    <goods-list :goods="showGoods"></goods-list>
   </div>
 </template>
 
@@ -128,8 +16,9 @@ import NavBar from "../../components/common/navbar/NavBar";
 import HomeSwiper from "./childComps/HomeSwiper";
 import RecommendView from "./childComps/RecommendView";
 import FeatureView from "./childComps/FeatureView";
-import { getHomeMultidata } from "../../network/home";
+import { getHomeMultidata, getHomeGoods } from "../../network/home";
 import TabControl from "../../components/content/tabcontrol/TabControl";
+import GoodsList from "../../components/content/goods/GoodsList";
 
 export default {
   name: "Home",
@@ -138,22 +27,69 @@ export default {
     HomeSwiper,
     RecommendView,
     FeatureView,
-    TabControl
+    TabControl,
+    GoodsList
   },
   data() {
     return {
       banners: [],
-      recommends: []
+      recommends: [],
+      goods: {
+        pop: { page: 0, list: [] },
+        new: { page: 0, list: [] },
+        sell: { page: 0, list: [] }
+      },
+      currenttype: "pop"
     };
+  },
+  computed: {
+    showGoods() {
+      return this.goods[this.currenttype].list;
+    }
   },
   created() {
     // 请求多个数据
-    getHomeMultidata().then(res => {
-      // console.log(res);
-      // this.result = res;
-      this.banners = res.data.banner.list;
-      this.recommends = res.data.recommend.list;
-    });
+    this.getHomeMultidata();
+    // 请求商品数据
+    this.getHomeGoods("pop");
+    this.getHomeGoods("new");
+    this.getHomeGoods("sell");
+  },
+  methods: {
+    // 事件监听方法
+    tabclick(index) {
+      switch (index) {
+        case 0:
+          this.currenttype = "pop";
+          break;
+        case 1:
+          this.currenttype = "new";
+          break;
+        case 2:
+          this.currenttype = "sell";
+          break;
+      }
+    },
+    // 网络数据请求方法
+    getHomeMultidata() {
+      getHomeMultidata().then(res => {
+        // console.log(res);
+        // this.result = res;
+        this.banners = res.data.banner.list;
+        this.recommends = res.data.recommend.list;
+      });
+    },
+    getHomeGoods(type) {
+      // 此处的 pages 是拿到的 data 中 goods 对象的对应 type 的那条数据，
+      // page 是当前已加载的页面数量，并对其自动加1
+      // 在请求数据时获取的就是对应 type 当前已加载页面的总数据
+      const pages = this.goods[type].page + 1;
+      getHomeGoods(type, pages).then(res => {
+        // console.log(res);
+        this.goods[type].list.push(...res.data.list);
+        this.goods[type].page += 1;
+      });
+    }
   }
 };
 </script>
