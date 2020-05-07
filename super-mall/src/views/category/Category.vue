@@ -116,7 +116,18 @@ export default {
     };
   },
   mounted() {
-    this.scroll = new BScroll(document.querySelector(".wrapper"), {});
+    this.scroll = new BScroll(document.querySelector(".wrapper"), {
+      probeType: 3,
+      pullUpload: true
+    });
+
+    this.scroll.on("scroll", position => {
+      console.log(position);
+    });
+
+    this.scroll.on("pullingUp", () => {
+      console.log("上啦加载更多");
+    });
   }
 };
 </script>
@@ -126,6 +137,6 @@ export default {
   height: 350px;
   background: yellow;
 
-  /* overflow-y: scroll; */
+  overflow-y: scroll;
 }
 </style>
