@@ -92,6 +92,8 @@ export default {
     this.saveY = this.$refs.scroll.getScrollY();
   },
   created() {
+    // this.$refs.scroll.scrollTo(0, this.saveY, 0);
+    // this.$refs.scroll.refresh();
     // 请求多个数据
     this.getHomeMultidata();
     // 请求商品数据
