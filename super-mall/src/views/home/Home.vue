@@ -47,6 +47,7 @@ import BackTop from "../../components/content/backTop/BackTop";
 
 import { getHomeMultidata, getHomeGoods } from "../../network/home";
 import { debounce } from "../../common/utils";
+import { itemListenerMixin } from "../../common/mixin";
 
 export default {
   name: "Home",
@@ -60,6 +61,7 @@ export default {
     Scroll,
     BackTop
   },
+  mixins: [itemListenerMixin],
   data() {
     return {
       banners: [],
@@ -89,7 +91,11 @@ export default {
     this.$refs.scroll.refresh();
   },
   deactivated() {
+    // 1.保存Y值
     this.saveY = this.$refs.scroll.getScrollY();
+
+    // 2.取消全局事件的监听
+    this.$bus.$off("itemImgLoad", this.itemImgListener);
   },
   created() {
     // this.$refs.scroll.scrollTo(0, this.saveY, 0);
@@ -102,11 +108,8 @@ export default {
     this.getHomeGoods("sell");
   },
   mounted() {
-    // 图片加载完成的事件监听
-    const refresh = debounce(this.$refs.scroll.refresh, 50);
-    this.$bus.$on("itemImageLoad", () => {
-      refresh();
-    });
+    // 手动代码点击一次
+    this.tabclick(0);
   },
   methods: {
     // 事件监听方法
@@ -124,6 +127,10 @@ export default {
       }
       this.$refs.tabControl1.currentIndex = index;
       this.$refs.tabControl2.currentIndex = index;
+      // if (this.$refs.tabControl1 !== undefined) {
+      //   this.$refs.tabControl1.currentIndex = index;
+      //   this.$refs.tabControl2.currentIndex = index;
+      // }
     },
     // 组件点击监听
     backClick() {
