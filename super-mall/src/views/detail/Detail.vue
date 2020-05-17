@@ -10,6 +10,8 @@
       <detail-comment-info ref="comment" :comment-info="commentInfo"></detail-comment-info>
       <goods-list ref="recommend" :goods="recommends"></goods-list>
     </scroll>
+    <detail-bottom-bar @addcart="addToCart"></detail-bottom-bar>
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -21,6 +23,7 @@ import DetailShopInfo from "../detail/childcomps/DetailShopInfo";
 import DetailGoodsInfo from "../detail/childcomps/DetailGoodsInfo";
 import DetailParamInfo from "../detail/childcomps/DetailParamInfo";
 import DetailCommentInfo from "../detail/childcomps/DetailCommentInfo";
+import DetailBottomBar from "../detail/childcomps/DetailBottomBar";
 
 import Scroll from "../../components/common/scroll/Scroll";
 import GoodsList from "../../components/content/goods/GoodsList";
@@ -33,7 +36,7 @@ import {
   GoodsParam
 } from "../../network/detail";
 import { debounce } from "../../common/utils";
-import { itemListenerMixin } from "../../common/mixin";
+import { itemListenerMixin, backTopMixin } from "../../common/mixin";
 
 export default {
   name: "Detail",
@@ -45,10 +48,11 @@ export default {
     DetailGoodsInfo,
     DetailParamInfo,
     DetailCommentInfo,
+    DetailBottomBar,
     Scroll,
     GoodsList
   },
-  mixins: [itemListenerMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   data() {
     return {
       iid: null,
@@ -122,6 +126,7 @@ export default {
       this.themeTopYs.push(this.$refs.params.$el.offsetTop);
       this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
       this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
+      this.themeTopYs.push(Number.MAX_VALUE);
       console.log(this.themeTopYs);
     }, 100);
   },
@@ -144,19 +149,50 @@ export default {
 
       // 2. positionY和主题中值进行对比
       let length = this.themeTopYs.length;
-      for (let i = 0; i < length; i++) {
+      // 二、hack方法
+      for (let i = 0; i < length - 1; i++) {
         if (
-          this.currentIndex !== i &&
-          ((i < length - 1 &&
-            positionY >= this.themeTopYs[i] &&
-            positionY < this.themeTopYs[i + 1]) ||
-            (i === length - 1 && positionY >= this.themeTopYs[i]))
+          this.currentIndex !== 1 &&
+          positionY >= this.themeTopYs[i] &&
+          positionY < this.themeTopYs[i + 1]
         ) {
           this.currentIndex = i;
-          console.log(this.currentIndex);
+          // console.log(this.currentIndex);
           this.$refs.nav.currentIndex = this.currentIndex;
         }
       }
+
+      // 一、普通方法
+      // for (let i = 0; i < length; i++) {
+      //   if (
+      //     this.currentIndex !== i &&
+      //     ((i < length - 1 &&
+      //       positionY >= this.themeTopYs[i] &&
+      //       positionY < this.themeTopYs[i + 1]) ||
+      //       (i === length - 1 && positionY >= this.themeTopYs[i]))
+      //   ) {
+      //     this.currentIndex = i;
+      //     console.log(this.currentIndex);
+      //     this.$refs.nav.currentIndex = this.currentIndex;
+      //   }
+      // }
+
+      // 3.是否显示回到顶部
+      this.listenShowBackTop(position);
+    },
+    addToCart() {
+      // 1.获取购物车想要展示的信息
+      const product = {};
+      product.image = this.topImages[0];
+      product.title = this.goodsInfo.title;
+      product.desc = this.goodsInfo.desc;
+      product.price = this.goodsInfo.realPrice;
+      product.iid = this.iid;
+      console.log(product);
+
+      // 2.将商品添加到购物车里
+      // this.$store.commit("addCart", product);
+      this.$store.dispatch("addCart", product);
     }
   }
 };
@@ -175,6 +211,6 @@ export default {
   background-color: #fff;
 }
 .content {
-  height: calc(100% - 44px);
+  height: calc(100% - 44px - 49px);
 }
 </style>
