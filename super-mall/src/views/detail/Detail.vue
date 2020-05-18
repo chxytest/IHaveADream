@@ -10,7 +10,7 @@
       <detail-comment-info ref="comment" :comment-info="commentInfo"></detail-comment-info>
       <goods-list ref="recommend" :goods="recommends"></goods-list>
     </scroll>
-    <detail-bottom-bar @addcart="addToCart"></detail-bottom-bar>
+    <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
@@ -184,9 +184,9 @@ export default {
       // 1.获取购物车想要展示的信息
       const product = {};
       product.image = this.topImages[0];
-      product.title = this.goodsInfo.title;
-      product.desc = this.goodsInfo.desc;
-      product.price = this.goodsInfo.realPrice;
+      product.title = this.goods.title;
+      product.desc = this.goods.desc;
+      product.price = this.goods.realPrice;
       product.iid = this.iid;
       console.log(product);
 

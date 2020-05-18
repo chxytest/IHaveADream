@@ -26,7 +26,7 @@
 export default {
   name: "DetailBottomBar",
   methods: {
-    addToCart() {
+    addToCart(event) {
       // console.log("添加到购物车");
       this.$emit("addToCart");
     }
