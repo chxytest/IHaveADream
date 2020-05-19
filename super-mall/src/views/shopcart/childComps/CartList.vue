@@ -23,14 +23,14 @@ export default {
   },
   activated() {
     this.$refs.scroll.refresh();
-    console.log("-------");
+    // console.log("-------");
   }
 };
 </script>
 
 <style scoped>
 .cart-list {
-  height: calc(100% - 44px - 49px);
+  height: calc(100% - 44px - 49px - 40px);
 }
 
 .content {
