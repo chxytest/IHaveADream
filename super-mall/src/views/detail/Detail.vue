@@ -12,6 +12,7 @@
     </scroll>
     <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
+    <!-- <toast :message="message" :show="show"></toast> -->
   </div>
 </template>
 
@@ -24,9 +25,12 @@ import DetailGoodsInfo from "../detail/childcomps/DetailGoodsInfo";
 import DetailParamInfo from "../detail/childcomps/DetailParamInfo";
 import DetailCommentInfo from "../detail/childcomps/DetailCommentInfo";
 import DetailBottomBar from "../detail/childcomps/DetailBottomBar";
+// import Toast from "../../components/common/toast/Toast";
 
 import Scroll from "../../components/common/scroll/Scroll";
 import GoodsList from "../../components/content/goods/GoodsList";
+
+import { mapActions } from "vuex";
 
 import {
   getDetail,
@@ -51,6 +55,7 @@ export default {
     DetailBottomBar,
     Scroll,
     GoodsList
+    // Toast
   },
   mixins: [itemListenerMixin, backTopMixin],
   data() {
@@ -65,6 +70,8 @@ export default {
       recommends: [],
       themeTopYs: [],
       getThemeTopY: null
+      // message: "",
+      // show: false
     };
   },
   created() {
@@ -136,6 +143,7 @@ export default {
     this.$bus.$off("itemImgLoad", this.itemImgListener);
   },
   methods: {
+    ...mapActions(["addCart"]),
     imageLoad() {
       this.$refs.scroll.refresh();
       this.getThemeTopY();
@@ -188,11 +196,19 @@ export default {
       product.desc = this.goods.desc;
       product.price = this.goods.realPrice;
       product.iid = this.iid;
-      console.log(product);
+      // console.log(product);
 
       // 2.将商品添加到购物车里
       // this.$store.commit("addCart", product);
-      this.$store.dispatch("addCart", product);
+      // 方法一：
+      this.addCart(product).then(res => {
+        // console.log($toast.show);
+        this.$toast.show(res, 2000);
+      });
+      // 方法二：
+      // this.$store.dispatch("addCart", product).then(res => {
+      //   console.log(res);
+      // });
     }
   }
 };
