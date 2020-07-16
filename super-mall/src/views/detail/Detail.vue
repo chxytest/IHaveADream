@@ -1,14 +1,14 @@
 <template>
   <div id="detail">
-    <detail-nav-bar class="detail-nav" @titleClick="titleClick" ref="nav"></detail-nav-bar>
+    <detail-nav-bar class="detail-nav" @titleClick="titleClick" ref="nav" />
     <scroll class="content" ref="scroll" :probe-type="3" @scroll="contentScroll">
-      <detail-swiper :top-images="topImages"></detail-swiper>
-      <detail-base-info :goods="goods"></detail-base-info>
-      <detail-shop-info :shop="shop"></detail-shop-info>
-      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad"></detail-goods-info>
-      <detail-param-info ref="params" :param-info="paramInfo"></detail-param-info>
-      <detail-comment-info ref="comment" :comment-info="commentInfo"></detail-comment-info>
-      <goods-list ref="recommend" :goods="recommends"></goods-list>
+      <detail-swiper :top-images="topImages" />
+      <detail-base-info :goods="goods" />
+      <detail-shop-info :shop="shop" />
+      <detail-goods-info :detail-info="detailInfo" @imageLoad="imageLoad" />
+      <detail-param-info ref="params" :param-info="paramInfo" />
+      <detail-comment-info ref="comment" :comment-info="commentInfo" />
+      <goods-list ref="recommend" :goods="recommends" />
     </scroll>
     <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
     <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
@@ -122,7 +122,7 @@ export default {
 
     // 3. 请求推荐数据
     getRecommend().then(res => {
-      console.log(res);
+      // console.log(res);
       this.recommends = res.data.list;
     });
 
@@ -134,7 +134,7 @@ export default {
       this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
       this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
       this.themeTopYs.push(Number.MAX_VALUE);
-      console.log(this.themeTopYs);
+      // console.log(this.themeTopYs);
     }, 100);
   },
   mounted() {},

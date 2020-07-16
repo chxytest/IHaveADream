@@ -85,8 +85,8 @@ export default {
     console.log("home destroyed");
   },
   activated() {
-    this.$refs.scroll.scrollTo(0, this.saveY, 0);
     this.$refs.scroll.refresh();
+    this.$refs.scroll.scrollTo(0, this.saveY, 0);
   },
   deactivated() {
     // 1.保存Y值
@@ -96,8 +96,6 @@ export default {
     this.$bus.$off("itemImgLoad", this.itemImgListener);
   },
   created() {
-    // this.$refs.scroll.scrollTo(0, this.saveY, 0);
-    // this.$refs.scroll.refresh();
     // 请求多个数据
     this.getHomeMultidata();
     // 请求商品数据
@@ -140,7 +138,6 @@ export default {
       // 对不同类型的商品上拉加载更多
       this.getHomeGoods(this.currenttype);
       // 从新计算高度
-      // this.$refs.scroll.scroll.refresh();
     },
     swiperImageLoad() {
       // 获取 tabControl 的 offsetTop
